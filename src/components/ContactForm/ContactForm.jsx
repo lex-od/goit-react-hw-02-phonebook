@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-// import css from './ContactForm.module.scss';
+import css from './ContactForm.module.scss';
 import config from '../../json/ContactFormConfig.json';
 
 class ContactForm extends Component {
@@ -28,7 +28,7 @@ class ContactForm extends Component {
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <label>
+                <label className={css.label}>
                     Имя
                     <input
                         type="text"
@@ -40,7 +40,7 @@ class ContactForm extends Component {
                         required
                     />
                 </label>
-                <label>
+                <label className={css.label}>
                     Телефон
                     <input
                         type="tel"
@@ -52,7 +52,7 @@ class ContactForm extends Component {
                         required
                     />
                 </label>
-                <button>Добавить контакт</button>
+                <button className={css.addContact}>Добавить контакт</button>
             </form>
         );
     }

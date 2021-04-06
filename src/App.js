@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { v4 as uuid } from 'uuid';
-// import css from './styles/App.module.scss';
+import css from './styles/App.module.scss';
 import config from './json/AppConfig.json';
 import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
@@ -57,10 +57,10 @@ class App extends Component {
 
         return (
             <div className="container">
-                <h1>Телефонная книга</h1>
+                <h1 className={css.telBookTitle}>Телефонная книга</h1>
                 <ContactForm onSubmit={this.addContact} />
 
-                <h2>Контакты</h2>
+                <h2 className={css.contactsTitle}>Контакты</h2>
                 <Filter value={filter} onChange={this.changeFilter} />
                 <ContactList
                     contacts={filteredContacts}
