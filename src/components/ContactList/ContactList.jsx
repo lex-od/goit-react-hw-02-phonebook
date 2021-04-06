@@ -4,9 +4,9 @@ import ContactItem from '../ContactItem';
 
 const ContactList = ({ contacts }) => (
     <ul>
-        {contacts.map(({ id, name }) => (
+        {contacts.map(({ id, name, number }) => (
             <li key={id}>
-                <ContactItem name={name} />
+                <ContactItem name={name} number={number} />
             </li>
         ))}
     </ul>

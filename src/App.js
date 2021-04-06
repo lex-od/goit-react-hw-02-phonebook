@@ -9,11 +9,11 @@ class App extends Component {
         contacts: [],
     };
 
-    addContact = name => {
-        const newContact = { id: uuid(), name };
+    addContact = ({ name, number }) => {
+        const newContact = { id: uuid(), name, number };
 
-        this.setState(actState => ({
-            contacts: [newContact, ...actState.contacts],
+        this.setState(({ contacts }) => ({
+            contacts: [newContact, ...contacts],
         }));
     };
 

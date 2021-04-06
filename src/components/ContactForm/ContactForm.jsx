@@ -8,7 +8,7 @@ class ContactForm extends Component {
         onSubmit: PropTypes.func.isRequired,
     };
 
-    state = { name: '' };
+    state = { name: '', number: '' };
 
     handleChange = e => {
         const { name, value } = e.target;
@@ -18,13 +18,13 @@ class ContactForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        this.props.onSubmit(this.state.name);
+        this.props.onSubmit(this.state);
 
-        this.setState({ name: '' });
+        this.setState({ name: '', number: '' });
     };
 
     render() {
-        const { name } = this.state;
+        const { name, number } = this.state;
 
         return (
             <form onSubmit={this.handleSubmit}>
@@ -36,6 +36,18 @@ class ContactForm extends Component {
                         pattern={config.INPUT_NAME_PATTERN}
                         title={config.INPUT_NAME_TITLE}
                         value={name}
+                        onChange={this.handleChange}
+                        required
+                    />
+                </label>
+                <label>
+                    Телефон
+                    <input
+                        type="tel"
+                        name="number"
+                        pattern={config.INPUT_TEL_PATTERN}
+                        title={config.INPUT_TEL_TITLE}
+                        value={number}
                         onChange={this.handleChange}
                         required
                     />
