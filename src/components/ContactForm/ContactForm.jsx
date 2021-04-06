@@ -29,7 +29,7 @@ class ContactForm extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <label>
-                    Name
+                    Имя
                     <input
                         type="text"
                         name="name"

@@ -22,8 +22,10 @@ class App extends Component {
 
         return (
             <div className="container">
+                <h1>Телефонная книга</h1>
                 <ContactForm onSubmit={this.addContact} />
 
+                <h2>Контакты</h2>
                 <ContactList contacts={contacts} />
             </div>
         );
