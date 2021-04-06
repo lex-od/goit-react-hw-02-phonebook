@@ -3,10 +3,12 @@ import { v4 as uuid } from 'uuid';
 // import css from './styles/App.module.scss';
 import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
+import Filter from './components/Filter';
 
 class App extends Component {
     state = {
         contacts: [],
+        filter: '',
     };
 
     addContact = ({ name, number }) => {
@@ -17,8 +19,21 @@ class App extends Component {
         }));
     };
 
+    changeFilter = e => {
+        this.setState({ filter: e.target.value });
+    };
+
+    getFilteredContacts() {
+        const normFilter = this.state.filter.toLowerCase();
+
+        return this.state.contacts.filter(({ name }) =>
+            name.toLowerCase().includes(normFilter),
+        );
+    }
+
     render() {
-        const { contacts } = this.state;
+        const { filter } = this.state;
+        const filteredContacts = this.getFilteredContacts();
 
         return (
             <div className="container">
@@ -26,7 +41,8 @@ class App extends Component {
                 <ContactForm onSubmit={this.addContact} />
 
                 <h2>Контакты</h2>
-                <ContactList contacts={contacts} />
+                <Filter value={filter} onChange={this.changeFilter} />
+                <ContactList contacts={filteredContacts} />
             </div>
         );
     }
