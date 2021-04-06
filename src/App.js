@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { v4 as uuid } from 'uuid';
 // import css from './styles/App.module.scss';
 import ContactForm from './components/ContactForm';
+import ContactList from './components/ContactList';
 
 class App extends Component {
     state = {
@@ -17,17 +18,13 @@ class App extends Component {
     };
 
     render() {
-        // const { contacts } = this.state;
+        const { contacts } = this.state;
 
         return (
             <div className="container">
                 <ContactForm onSubmit={this.addContact} />
 
-                {/* <ul>
-                    {contacts.map(({ name }) => (
-                        <li>{name}</li>
-                    ))}
-                </ul> */}
+                <ContactList contacts={contacts} />
             </div>
         );
     }
